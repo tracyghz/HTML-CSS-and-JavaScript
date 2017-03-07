@@ -1,0 +1,27 @@
+// Full Stack Dev hw2p1 Huizhong Gao
+<html>
+	<head>
+		<title> Javascript color guessing game: </title>
+	</head>
+	<script>
+			var colors = ["aqua", "black", "blue", "darkgrey", "gold", "khaki", "snow", "yellow", "tan", "silver"];
+			var length = colors.length;
+			function do_game(){
+				var num = Math.random() * length;
+				num = Math.floor(num);
+				var targetColor = colors[num];
+				alert("The target color is:" + targetColor);
+				var finished = false;
+				var guess;
+				while(!finished){
+					guess = prompt("The color in my mind is one of the following: auqa, black, blue, darkgrey, gold, khaki, snow, yellow, tan, silver. Please input your guess:");
+					var comResult = guess.localeCompare(targetColor);
+					if(comResult == 0){
+						finished = true;
+					}
+				}
+			}
+	</script>
+		<body onload = "do_game()">	
+		</body>
+</html>

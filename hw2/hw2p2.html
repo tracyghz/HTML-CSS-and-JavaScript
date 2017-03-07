@@ -1,0 +1,50 @@
+// Full Stack Dev hw2p2 Huizhong Gao
+<html>
+	<head>
+		<title> Javascript color guessing game: </title>
+	</head>
+	<script>
+			var colors = ["aqua", "black", "blue", "darkgrey", "gold", "khaki", "snow", "yellow", "tan", "silver"];
+			var length = colors.length;
+			var guess;
+			var num = Math.random() * length;
+			num = Math.floor(num);
+			var targetColor = colors[num];
+			var count = 0;
+			var finished = false;
+			function do_game(){
+				alert("The target color is:" + targetColor);
+				guess = prompt("The color in my mind is one of the following: auqa, black, blue, darkgrey, gold, khaki, snow, yellow, tan, silver. Please input your guess:");
+				while(!finished){
+					count++;
+					check_guess();
+				}
+			}
+			function check_guess(){
+				var comResult = guess.localeCompare(targetColor);
+				if(guess != "aqua" && guess != "black" && guess != "blue" && guess != "darkgrey" && guess != "gold" && guess != "khaki" && guess != "snow" && guess != "yellow" && guess != "tan" && guess != "silver"){
+					guess = prompt("I don't recognize that color. " + "The color in my mind is one of the following: auqa, black, blue, darkgrey, gold, khaki, snow, yellow, tan, silver. Please try again:");
+				}
+				else if(comResult == 0) {
+					myBody = document.getElementsByTagName("body")[0];
+					myBody.style.background = targetColor;
+					if(count == 1){
+						alert("Your nailed it! " + "And you took " + count + " guess. " + "Excellent! ");
+						finished = true;
+					}
+					else{
+						alert("Your nailed it! " + "And you took " + count + " guesses. ");
+						finished = true;
+					}
+				}
+				else if(comResult == -1){
+					guess = prompt("Your guess is alphabetically lower than target. " + "The color in my mind is one of the following: auqa, black, blue, darkgrey, gold, khaki, snow, yellow, tan, silver. Please try again:");
+				}
+				else if(comResult == 1){
+					guess = prompt("Your guess is alphabetically higher than target. " + "The color in my mind is one of the following: auqa, black, blue, darkgrey, gold, khaki, snow, yellow, tan, silver. Please try again:");
+				}
+			}
+	</script>
+		<body onload = "do_game()">	
+		</body>
+</html>
